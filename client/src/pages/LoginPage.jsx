@@ -57,7 +57,7 @@ const LoginPage = () => {
           )
         }
 
-        <button type='submit' className='py-3 bg-gradient-to-r from-purple-400  to-violet-600 text-white rounded-md cursor-pointer'>
+        <button type='submit' className='py-3 bg-linear-to-r from-purple-400  to-violet-600 text-white rounded-md cursor-pointer'>
           { currState === "Sign Up"? "Create Account":"Login Now"}
         </button>
 

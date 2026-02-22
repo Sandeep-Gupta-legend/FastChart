@@ -35,7 +35,7 @@ export const getMessages = async (req, res) => {
                 { senderId: myId, receiverId: selectedUserId },
                 { senderId: selectedUserId, receiverId: myId },
             ]
-        });
+        }).sort({ createdAt: 1 });
         
         await Message.updateMany(
             { senderId: selectedUserId, receiverId: myId },
@@ -65,6 +65,10 @@ export const sendMessage = async (req, res) => {
         const { text, image } = req.body;
         const receiverId = req.params.id;
         const senderId = req.user._id;
+
+        if (!text && !image) {
+            return res.json({ success: false, message: "Message body is empty" });
+        }
 
         let imageUrl;
         if (image) {
